@@ -351,7 +351,10 @@ export default function DigitalCollageMotivator() {
             {colors.map(color => (
               <button
                 key={color.hex}
-                onClick={() => setSelectedColor(color.hex)}
+                onClick={() => {
+                  setSelectedColor(color.hex);
+                  setCutoutPaths([]);
+                }}
                 style={{
                   padding: '0',
                   width: '100%',
