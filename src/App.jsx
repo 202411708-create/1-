@@ -242,7 +242,8 @@ export default function DigitalCollageMotivator() {
             fontSize: '1.8rem',
             fontWeight: '700',
             pointerEvents: 'none',
-            letterSpacing: '0.5px'
+            letterSpacing: '0.5px',
+            whiteSpace: 'nowrap'
           }}>
             여기에 그려보세요
           </div>
