@@ -308,7 +308,8 @@ export default function DigitalCollageMotivator() {
       transform: 'translate(-50%, -50%)',
       cursor: draggingId === shape.id ? 'grabbing' : 'grab',
       touchAction: 'none',
-      userSelect: 'none'
+      userSelect: 'none',
+      pointerEvents: 'auto'
     };
 
     return (
@@ -317,9 +318,26 @@ export default function DigitalCollageMotivator() {
         className="main-canvas-shape"
         style={containerStyle}
         onMouseDown={(e) => handleShapeDragStart(e, shape)}
+        onMouseMove={(e) => {
+          if (draggingId === shape.id) {
+            handleShapeDragMove(e);
+          }
+        }}
+        onMouseUp={handleShapeDragEnd}
+        onMouseLeave={(e) => {
+          if (draggingId === shape.id) {
+            handleShapeDragEnd();
+          }
+        }}
         onTouchStart={(e) => handleShapeDragStart(e, shape)}
+        onTouchMove={(e) => {
+          if (draggingId === shape.id) {
+            handleShapeDragMove(e);
+          }
+        }}
+        onTouchEnd={handleShapeDragEnd}
       >
-        <svg width="300" height="300" style={{ overflow: 'visible' }}>
+        <svg width="300" height="300" style={{ overflow: 'visible', pointerEvents: 'none' }}>
           <path
             d={createSVGPath(shape.path)}
             fill={shape.color}
@@ -533,14 +551,7 @@ export default function DigitalCollageMotivator() {
             }
           }
         `}</style>
-        <div
-          className="main-canvas-area"
-          onMouseMove={handleShapeDragMove}
-          onMouseUp={handleShapeDragEnd}
-          onMouseLeave={handleShapeDragEnd}
-          onTouchMove={handleShapeDragMove}
-          onTouchEnd={handleShapeDragEnd}
-        >
+        <div className="main-canvas-area">
           {shapes.map((shape) => renderMainCanvasShape(shape))}
         </div>
       </div>
