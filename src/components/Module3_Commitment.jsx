@@ -1,67 +1,51 @@
 import { useState } from 'react';
 
-const STRATEGIES = {
-  "끝없는 숏폼 영상": [
-    { title: "앱 사용 시간 30분 제한", difficulty: "보통", effectiveness: 4, description: "스크린타임 기능 활용" },
-    { title: "숏폼 대신 긴 영상 보기", difficulty: "쉬움", effectiveness: 3, description: "의도적으로 종료 시점 만들기" },
-    { title: "앱을 폴더 깊이 숨기기", difficulty: "쉬움", effectiveness: 3, description: "접근 어렵게 만들기" },
-  ],
-  "자기 전 침대에서 폰": [
-    { title: "폰을 침대 밖에 두기", difficulty: "보통", effectiveness: 5, description: "물리적 거리 만들기" },
-    { title: "9시부터 흑백 모드", difficulty: "쉬움", effectiveness: 4, description: "폰을 지루하게 만들기" },
-    { title: "대신 책 읽기", difficulty: "쉬움", effectiveness: 3, description: "대체 습관 만들기" },
-  ],
-  "한 판만... 게임": [
-    { title: "타이머 맞추고 게임하기", difficulty: "보통", effectiveness: 4, description: "시간 약속 지키기" },
-    { title: "게임 전 할 일 먼저", difficulty: "보통", effectiveness: 4, description: "보상으로 게임하기" },
-    { title: "친구와 시간 약속", difficulty: "쉬움", effectiveness: 3, description: "같이 제한하기" },
-  ],
-  "default": [
-    { title: "알람 맞추기", difficulty: "쉬움", effectiveness: 3, description: "시간 체크하기" },
-    { title: "대체 활동 준비", difficulty: "보통", effectiveness: 4, description: "다른 재밌는 것 하기" },
-    { title: "친구/가족에게 도움 요청", difficulty: "쉬움", effectiveness: 4, description: "함께 변화하기" },
-  ]
-};
-
 export default function Module3_Commitment({ timeThieves, onComplete }) {
   const [step, setStep] = useState('intro');
   const [selectedThief, setSelectedThief] = useState(null);
-  const [targetMinutes, setTargetMinutes] = useState(30);
-  const [selectedStrategy, setSelectedStrategy] = useState(null);
 
   const top3 = timeThieves?.top3 || [];
-
-  const getStrategies = (thiefTitle) => {
-    return STRATEGIES[thiefTitle] || STRATEGIES.default;
-  };
-
-  const getCurrentTime = (thief) => {
-    const match = thief.estimatedTime.match(/(\d+\.?\d*)/);
-    return match ? parseFloat(match[1]) * 60 : 90; // 분 단위로 변환
-  };
 
   if (step === 'intro') {
     return (
       <div className="max-w-lg mx-auto animate-fade-in px-6">
-        <div className="bg-white rounded-2xl p-10 shadow-lg text-center space-y-8">
-          <h2 className="text-3xl font-bold text-gray-800">
-            이제 변화를 만들어볼까?
+        <div className="bg-white rounded-2xl p-10 shadow-muji text-center space-y-8">
+          <h2 className="text-3xl font-bold text-textDark">
+            오늘 발견한 것들을<br />
+            정리해볼까?
           </h2>
 
+          <div className="text-6xl">🕵️</div>
+
           <p className="text-gray-700 text-lg leading-relaxed">
-            시간도둑 TOP 3 중<br />
-            <span className="font-bold text-primary">하나만</span> 줄여보자!
+            시간탐정이 되어 나의 시간을<br />
+            자세히 들여다봤어!
           </p>
+
+          <button
+            onClick={() => setStep('summary')}
+            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-beige-700 transition-colors"
+          >
+            확인하기
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (step === 'summary') {
+    return (
+      <div className="max-w-lg mx-auto animate-fade-in px-6">
+        <div className="bg-white rounded-2xl p-8 shadow-muji space-y-6">
+          <h2 className="text-2xl font-bold text-textDark text-center mb-6">
+            🏆 내 시간도둑 TOP 3
+          </h2>
 
           <div className="space-y-4">
             {top3.map((thief, index) => (
-              <button
+              <div
                 key={thief.id}
-                onClick={() => {
-                  setSelectedThief(thief);
-                  setStep('setGoal');
-                }}
-                className="w-full p-5 bg-gradient-to-r from-orange-50 to-yellow-50 border-2 border-orange-200 rounded-xl hover:border-orange-400 transition-all text-left"
+                className="bg-beige-50 border-2 border-warning rounded-xl p-4"
               >
                 <div className="flex items-center gap-4">
                   <div className="text-4xl">
@@ -69,72 +53,25 @@ export default function Module3_Commitment({ timeThieves, onComplete }) {
                   </div>
                   <div className="text-3xl">{thief.emoji}</div>
                   <div className="flex-1">
-                    <div className="font-bold text-gray-800 text-lg">{thief.title}</div>
+                    <div className="font-bold text-textDark text-lg">{thief.title}</div>
                     <div className="text-sm text-gray-600 mt-1">{thief.estimatedTime}</div>
                   </div>
                 </div>
-              </button>
+              </div>
             ))}
           </div>
-        </div>
-      </div>
-    );
-  }
 
-  if (step === 'setGoal') {
-    const currentMinutes = getCurrentTime(selectedThief);
-
-    return (
-      <div className="max-w-lg mx-auto animate-fade-in px-6">
-        <div className="bg-white rounded-2xl p-8 shadow-lg space-y-8">
-          <div className="text-center">
-            <div className="text-6xl mb-3">{selectedThief.emoji}</div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
-              {selectedThief.title}
-            </h2>
-            <p className="text-gray-600">
-              현재: {selectedThief.estimatedTime}
+          <div className="bg-beige-100 border-2 border-beige-300 rounded-xl p-6 space-y-3">
+            <div className="text-4xl text-center">💡</div>
+            <p className="text-center text-gray-800 font-semibold">
+              이 시간도둑들을 알아차린 것만으로도<br />
+              큰 발걸음이야!
             </p>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-gray-800 text-center">
-              얼마나 줄이고 싶어?
-            </h3>
-
-            <div className="space-y-3">
-              <input
-                type="range"
-                min="15"
-                max={currentMinutes}
-                step="15"
-                value={targetMinutes}
-                onChange={(e) => setTargetMinutes(Number(e.target.value))}
-                className="w-full"
-              />
-
-              <div className="text-center space-y-2">
-                <div className="text-4xl font-bold text-primary">
-                  {Math.floor(targetMinutes / 60) > 0 && `${Math.floor(targetMinutes / 60)}시간 `}
-                  {targetMinutes % 60}분
-                </div>
-                <p className="text-sm text-gray-600">목표 시간</p>
-              </div>
-
-              <div className="bg-green-50 border-2 border-green-300 rounded-xl p-4 text-center">
-                <div className="text-2xl font-bold text-green-700">
-                  {Math.floor((currentMinutes - targetMinutes) / 60) > 0 &&
-                    `${Math.floor((currentMinutes - targetMinutes) / 60)}시간 `}
-                  {(currentMinutes - targetMinutes) % 60}분을 되찾는 거야!
-                </div>
-                <div className="text-6xl mt-2">🕵️</div>
-              </div>
-            </div>
-          </div>
-
           <button
-            onClick={() => setStep('selectStrategy')}
-            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors"
+            onClick={() => setStep('reflection')}
+            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-beige-700 transition-colors"
           >
             다음
           </button>
@@ -143,171 +80,114 @@ export default function Module3_Commitment({ timeThieves, onComplete }) {
     );
   }
 
-  if (step === 'selectStrategy') {
-    const strategies = getStrategies(selectedThief.title);
-
+  if (step === 'reflection') {
     return (
-      <div className="max-w-lg mx-auto animate-fade-in">
-        <div className="bg-white rounded-2xl p-6 shadow-lg space-y-6">
-          <div className="text-center">
-            <div className="text-5xl mb-3">🤖</div>
-            <h2 className="text-2xl font-bold text-gray-800">
-              이 방법들이 도움이 될거야!
-            </h2>
-          </div>
+      <div className="max-w-lg mx-auto animate-fade-in px-6">
+        <div className="bg-white rounded-2xl p-10 shadow-muji space-y-8">
+          <h2 className="text-2xl font-bold text-textDark text-center">
+            이 중에서 어떤 것을<br />
+            줄이고 싶어?
+          </h2>
 
-          <div className="space-y-3">
-            {strategies.map((strategy, index) => (
+          <div className="space-y-4">
+            {top3.map((thief, index) => (
               <button
-                key={index}
+                key={thief.id}
                 onClick={() => {
-                  setSelectedStrategy(strategy);
-                  setStep('commitment');
+                  setSelectedThief(thief);
+                  setStep('final');
                 }}
-                className="w-full p-5 bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 rounded-xl hover:border-blue-400 transition-all text-left"
+                className={`w-full p-5 rounded-xl border-2 transition-all text-left ${
+                  selectedThief?.id === thief.id
+                    ? 'border-primary bg-beige-100'
+                    : 'border-beige-300 hover:border-beige-400 hover:bg-beige-50'
+                }`}
               >
-                <div className="space-y-2">
-                  <div className="flex items-start justify-between">
-                    <h3 className="font-bold text-gray-800 text-lg flex-1">
-                      💡 {strategy.title}
-                    </h3>
+                <div className="flex items-center gap-4">
+                  <div className="text-4xl">
+                    {index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
                   </div>
-
-                  <div className="flex gap-3 text-sm">
-                    <span className="px-3 py-1 bg-white rounded-full text-gray-700">
-                      난이도: {strategy.difficulty}
-                    </span>
-                    <span className="px-3 py-1 bg-white rounded-full text-gray-700">
-                      효과: {'★'.repeat(strategy.effectiveness)}
-                    </span>
+                  <div className="text-3xl">{thief.emoji}</div>
+                  <div className="flex-1">
+                    <div className="font-bold text-textDark text-lg">{thief.title}</div>
                   </div>
-
-                  <p className="text-gray-600 text-sm">
-                    {strategy.description}
-                  </p>
                 </div>
               </button>
             ))}
           </div>
+
+          <div className="bg-beige-100 border-2 border-beige-300 rounded-xl p-6 text-center">
+            <div className="text-3xl mb-2">🕵️</div>
+            <p className="text-gray-700">
+              선택하지 않아도 괜찮아!<br />
+              생각해보는 것만으로도 충분해
+            </p>
+          </div>
+
+          <button
+            onClick={() => setStep('final')}
+            className="w-full py-4 bg-beige-200 text-beige-700 rounded-xl font-bold text-lg hover:bg-beige-300 transition-colors"
+          >
+            넘어가기
+          </button>
         </div>
       </div>
     );
   }
 
-  if (step === 'commitment') {
-    const today = new Date();
-    const dateStr = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
-
+  if (step === 'final') {
     return (
-      <div className="max-w-lg mx-auto animate-fade-in space-y-6">
-        <div className="bg-white rounded-2xl p-6 shadow-lg space-y-6">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              나의 다짐을 완성해볼까?
-            </h2>
-          </div>
-
-          <div className="bg-gradient-to-br from-yellow-50 to-orange-50 border-3 border-orange-300 rounded-2xl p-6 space-y-4">
-            <div className="text-center text-3xl font-bold text-gray-800 mb-4">
-              나의 다짐
-            </div>
-
-            <div className="space-y-3 text-gray-800">
-              <div>
-                <div className="text-sm text-gray-600 mb-1">줄이고 싶은 습관:</div>
-                <div className="font-bold text-lg">{selectedThief.title}</div>
-              </div>
-
-              <div>
-                <div className="text-sm text-gray-600 mb-1">목표:</div>
-                <div className="font-bold text-lg">
-                  {selectedThief.estimatedTime} → {Math.floor(targetMinutes / 60) > 0 &&
-                    `${Math.floor(targetMinutes / 60)}시간 `}
-                  {targetMinutes % 60}분
-                </div>
-              </div>
-
-              <div>
-                <div className="text-sm text-gray-600 mb-1">내가 할 방법:</div>
-                <div className="font-bold text-lg">
-                  💡 {selectedStrategy.title}
-                </div>
-              </div>
-
-              <div>
-                <div className="text-sm text-gray-600 mb-1">시작일:</div>
-                <div className="font-bold text-lg">{dateStr}</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex gap-3">
-            <button
-              onClick={() => {
-                // 스크린샷 힌트
-                alert('스크린샷을 찍어서 저장해보세요! 📸');
-              }}
-              className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl font-bold hover:bg-gray-300 transition-colors"
-            >
-              📸 스크린샷
-            </button>
-            <button
-              onClick={() => setStep('encouragement')}
-              className="flex-1 py-3 bg-primary text-white rounded-xl font-bold hover:bg-blue-600 transition-colors"
-            >
-              완료
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (step === 'encouragement') {
-    return (
-      <div className="max-w-lg mx-auto animate-fade-in">
-        <div className="bg-white rounded-2xl p-8 shadow-lg space-y-6">
+      <div className="max-w-lg mx-auto animate-fade-in px-6">
+        <div className="bg-white rounded-2xl p-10 shadow-muji space-y-8">
           <div className="text-center space-y-4">
             <div className="text-7xl">🎉</div>
-            <h2 className="text-3xl font-bold text-gray-800">다짐 완성!</h2>
+            <h2 className="text-3xl font-bold text-textDark">잘했어!</h2>
+          </div>
 
-            <div className="bg-blue-50 p-6 rounded-xl space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="text-3xl">🕵️</div>
-                <div className="text-left">
-                  <p className="text-gray-800 font-semibold mb-2">잘했어!</p>
-                  <p className="text-gray-700">
-                    이제 시간도둑과 싸울 준비가 됐네!
-                  </p>
-                </div>
+          {selectedThief && (
+            <div className="bg-beige-100 border-2 border-primary rounded-2xl p-6 space-y-3">
+              <div className="text-center">
+                <div className="text-4xl mb-2">{selectedThief.emoji}</div>
+                <p className="text-gray-800 font-semibold">
+                  <span className="text-primary font-bold">{selectedThief.title}</span>를<br />
+                  줄이고 싶다고 생각했구나!
+                </p>
               </div>
             </div>
+          )}
 
-            <div className="bg-yellow-50 border-2 border-yellow-300 rounded-xl p-6 space-y-3">
-              <div className="text-3xl">💡</div>
-              <p className="font-semibold text-gray-800">기억해둬!:</p>
-              <div className="text-left space-y-2 text-gray-700">
-                <p>✅ 완벽하게 안 해도 괜찮아</p>
-                <p>✅ 조금씩 줄여가는 것 부터 시작하는거야</p>
-              </div>
-            </div>
-
-            <p className="text-lg text-gray-800 font-semibold">
-              다음 시간까지 한 번 시도해보자!
+          <div className="bg-beige-50 border-2 border-beige-300 rounded-xl p-6 space-y-3">
+            <div className="text-4xl text-center">🕵️</div>
+            <p className="text-gray-800 font-semibold text-center">
+              오늘은 여기까지!
             </p>
+            <p className="text-gray-700 text-center leading-relaxed">
+              다음 시간에는 시간도둑을 막는<br />
+              구체적인 방법을 배워볼 거야
+            </p>
+          </div>
+
+          <div className="bg-success/10 border-2 border-success rounded-xl p-6 space-y-3">
+            <div className="text-3xl text-center">💪</div>
+            <p className="text-gray-800 font-semibold text-center">
+              잊지 마!
+            </p>
+            <div className="text-left space-y-2 text-gray-700">
+              <p>✅ 시간도둑을 발견한 것만으로도 대단해</p>
+              <p>✅ 완벽하게 안 해도 괜찮아</p>
+              <p>✅ 조금씩 변화하면 돼</p>
+            </div>
           </div>
 
           <button
             onClick={() => {
               const commitmentData = {
-                thief: selectedThief,
-                targetMinutes,
-                strategy: selectedStrategy,
+                selectedThief: selectedThief || null,
                 date: new Date().toISOString()
               };
               onComplete(commitmentData);
             }}
-            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors"
+            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-beige-700 transition-colors"
           >
             마무리로 →
           </button>

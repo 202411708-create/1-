@@ -168,7 +168,7 @@ export default function Module2_TimeThief({ onComplete }) {
 
           <button
             onClick={() => setStep('cards')}
-            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors mt-6"
+            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-beige-700 transition-colors mt-6"
           >
             시작하기
           </button>
@@ -231,7 +231,7 @@ export default function Module2_TimeThief({ onComplete }) {
           <div className="flex gap-4 mt-6">
             <button
               onClick={() => handleJudgment(false)}
-              className="flex-1 py-4 bg-gray-300 text-gray-700 rounded-xl font-bold text-lg hover:bg-gray-400 transition-colors"
+              className="flex-1 py-4 bg-beige-200 text-beige-700 rounded-xl font-bold text-lg hover:bg-beige-300 transition-colors"
             >
               별로 안 빼앗음
             </button>
@@ -271,8 +271,8 @@ export default function Module2_TimeThief({ onComplete }) {
           <p className="text-gray-700">지금까지 5개 카드 중...</p>
 
           <div className="space-y-3">
-            <div className="bg-orange-50 border-2 border-orange-300 rounded-xl p-4">
-              <p className="text-xl font-bold text-orange-700">
+            <div className="bg-beige-100 border-2 border-warning rounded-xl p-4">
+              <p className="text-xl font-bold text-primary">
                 "많이 빼앗음" {thiefCount}개
               </p>
             </div>
@@ -298,7 +298,7 @@ export default function Module2_TimeThief({ onComplete }) {
               setCurrentCardIndex(5);
               setStep('cards');
             }}
-            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors"
+            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-beige-700 transition-colors"
           >
             계속하기
           </button>
@@ -317,7 +317,7 @@ export default function Module2_TimeThief({ onComplete }) {
 
           <button
             onClick={() => setStep('results')}
-            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors"
+            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-beige-700 transition-colors"
           >
             결과 보기
           </button>
@@ -341,7 +341,7 @@ export default function Module2_TimeThief({ onComplete }) {
             {top3.map((card, index) => (
               <div
                 key={card.id}
-                className="bg-gradient-to-r from-orange-50 to-yellow-50 border-2 border-orange-200 rounded-xl p-4 animate-scale-in"
+                className="bg-beige-50 border-2 border-warning rounded-xl p-4 animate-scale-in"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="flex items-center gap-4">
@@ -352,7 +352,7 @@ export default function Module2_TimeThief({ onComplete }) {
                       <div>
                         <h3 className="font-bold text-gray-800">{card.title}</h3>
                         <p className="text-sm text-gray-600">{card.subtitle}</p>
-                        <p className="text-sm font-semibold text-orange-600 mt-1">
+                        <p className="text-sm font-semibold text-warning mt-1">
                           예상: {card.estimatedTime}
                         </p>
                       </div>
@@ -364,7 +364,7 @@ export default function Module2_TimeThief({ onComplete }) {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-6">
+        <div className="bg-beige-100 border-2 border-beige-300 rounded-2xl p-6">
           <div className="text-center space-y-4">
             <div className="text-5xl">💰</div>
             <h3 className="text-xl font-bold text-gray-800">시간을 계산해볼까?</h3>
@@ -377,14 +377,14 @@ export default function Module2_TimeThief({ onComplete }) {
                 = 일주일 {(totalTime * 7).toFixed(0)}시간!<br />
                 = 한 달 {(totalTime * 30).toFixed(0)}시간!
               </p>
-              <p className="text-lg font-bold text-orange-600">
+              <p className="text-lg font-bold text-warning">
                 한 달이면 {(totalTime * 30 / 24).toFixed(0)}일치나 돼!
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-green-50 border-2 border-green-300 rounded-2xl p-6">
+        <div className="bg-success/10 border-2 border-success rounded-2xl p-6">
           <div className="text-center space-y-3">
             <div className="text-4xl">🌟</div>
             <h3 className="text-xl font-bold text-gray-800">만약 이 시간을 되찾으면...</h3>

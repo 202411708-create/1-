@@ -1,17 +1,51 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Module0_Onboarding from './components/Module0_Onboarding';
 import Module1_TimeMap from './components/Module1_TimeMap';
 import Module2_TimeThief from './components/Module2_TimeThief';
 import Module3_Commitment from './components/Module3_Commitment';
 import FinalScreen from './components/FinalScreen';
 
+const STORAGE_KEY = 'adhd-time-detective-data';
+
 function App() {
-  const [currentModule, setCurrentModule] = useState(0);
-  const [programData, setProgramData] = useState({
-    timeMap: null,
-    timeThieves: null,
-    commitment: null
+  // LocalStorage에서 저장된 데이터 복원
+  const [currentModule, setCurrentModule] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved).currentModule : 0;
+    } catch {
+      return 0;
+    }
   });
+
+  const [programData, setProgramData] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved).programData : {
+        timeMap: null,
+        timeThieves: null,
+        commitment: null
+      };
+    } catch {
+      return {
+        timeMap: null,
+        timeThieves: null,
+        commitment: null
+      };
+    }
+  });
+
+  // 자동 저장: currentModule 또는 programData가 변경될 때마다 저장
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        currentModule,
+        programData
+      }));
+    } catch (error) {
+      console.error('Failed to save to localStorage:', error);
+    }
+  }, [currentModule, programData]);
 
   const updateProgramData = (key, value) => {
     setProgramData(prev => ({
@@ -31,10 +65,16 @@ function App() {
       timeThieves: null,
       commitment: null
     });
+    // LocalStorage 초기화
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (error) {
+      console.error('Failed to clear localStorage:', error);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center">
+    <div className="min-h-screen bg-background flex items-center justify-center">
       <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         {/* Progress Bar */}
         {currentModule > 0 && currentModule < 4 && (
@@ -60,9 +100,9 @@ function App() {
                 {currentModule}/3
               </span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
+            <div className="w-full bg-beige-200 rounded-full h-2">
               <div
-                className="bg-gradient-to-r from-primary to-purple-500 h-2 rounded-full transition-all duration-500"
+                className="bg-primary h-2 rounded-full transition-all duration-500"
                 style={{ width: `${(currentModule / 3) * 100}%` }}
               ></div>
             </div>

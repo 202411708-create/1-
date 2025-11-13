@@ -59,7 +59,7 @@ export default function Module0_Onboarding({ onComplete }) {
 
           <button
             onClick={() => setScreen(2)}
-            className="px-16 py-6 bg-primary text-white rounded-2xl font-bold text-2xl hover:bg-blue-600 transition-colors shadow-lg"
+            className="px-16 py-6 bg-primary text-white rounded-2xl font-bold text-2xl hover:bg-beige-700 transition-colors shadow-muji"
           >
             다음
           </button>
@@ -69,10 +69,10 @@ export default function Module0_Onboarding({ onComplete }) {
       {/* Screen 2: 미션 소개 */}
       {screen === 2 && (
         <div className="text-center animate-fade-in space-y-16 max-w-2xl px-8">
-          <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl p-16 shadow-xl">
+          <div className="bg-beige-100 border-2 border-beige-300 rounded-3xl p-16 shadow-muji-lg">
             <div className="text-7xl mb-10">🎯</div>
-            <h2 className="text-5xl font-bold text-white mb-8">오늘의 목표</h2>
-            <p className="text-4xl font-bold text-white leading-relaxed">
+            <h2 className="text-5xl font-bold text-textDark mb-8">오늘의 목표</h2>
+            <p className="text-4xl font-bold text-primary leading-relaxed">
               나의 시간 사용<br />
               알아보기
             </p>
@@ -92,7 +92,7 @@ export default function Module0_Onboarding({ onComplete }) {
 
           <button
             onClick={() => setScreen(3)}
-            className="px-16 py-6 bg-primary text-white rounded-2xl font-bold text-2xl hover:bg-blue-600 transition-colors shadow-lg"
+            className="px-16 py-6 bg-primary text-white rounded-2xl font-bold text-2xl hover:bg-beige-700 transition-colors shadow-muji"
           >
             다음
           </button>
@@ -107,7 +107,7 @@ export default function Module0_Onboarding({ onComplete }) {
           {countdown === null && (
             <button
               onClick={handleStartCountdown}
-              className="px-20 py-8 bg-primary text-white rounded-2xl font-bold text-3xl hover:bg-blue-600 transition-colors shadow-xl"
+              className="px-20 py-8 bg-primary text-white rounded-2xl font-bold text-3xl hover:bg-beige-700 transition-colors shadow-muji-lg"
             >
               시작하기
             </button>

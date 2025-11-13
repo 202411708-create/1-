@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #4A90E2;
-  --color-success: #7ED321;
-  --color-warning: #F5A623;
-  --color-background: #FAFBFC;
-  --color-textDark: #2C3E50;
+  /* MUJI-inspired color palette */
+  --color-primary: #8B7355;
+  --color-secondary: #A89F91;
+  --color-accent: #D4A574;
+  --color-success: #9CAF88;
+  --color-warning: #C9A66B;
+  --color-background: #F5F3F0;
+  --color-textDark: #4A4238;
 }
 
 * {

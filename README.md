@@ -1,16 +1,183 @@
-# React + Vite
+# 🕵️ 시간탐정 게임 - ADHD 시간관리 프로그램 1회기
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ADHD 학생을 위한 전문 시간관리 중재 프로그램 (1회기)
 
-Currently, two official plugins are available:
+## 📋 프로그램 개요
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**목표**: 자신의 하루 시간 사용 습관을 점검하고, 낭비되는 시간을 인식한다
 
-## React Compiler
+**대상**: ADHD 학생 (초등 고학년 ~ 중학생)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**소요 시간**: 약 50분
 
-## Expanding the ESLint configuration
+**회기**: 1회기 (나의 시간 사용 알아보기)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎯 주요 특징
+
+### ADHD 학생 친화적 설계
+- ✅ **즉각적 피드백**: 모든 입력에 0.3초 내 시각적 반응
+- ✅ **짧은 주의집중**: 각 모듈 10~15분 이내
+- ✅ **시각적 학습**: 이모지와 그래프 중심 인터페이스
+- ✅ **게이미피케이션**: 시간탐정 내러티브로 몰입도 향상
+- ✅ **실수 용인**: Undo 및 수정 기능 제공
+- ✅ **자동 저장**: 중간 이탈 시에도 데이터 보존 (LocalStorage)
+
+### 무인양품(MUJI) 스타일 디자인
+- 🎨 베이지, 크림, 그레이 톤의 부드러운 색상
+- 🎨 미니멀한 레이아웃으로 인지 부하 감소
+- 🎨 큰 터치 영역 (min 44px)으로 오클릭 방지
+- 🎨 고딕체 폰트로 가독성 향상
+
+## 📱 기술 스택
+
+- **Frontend**: React 19 + Vite
+- **Styling**: Tailwind CSS 4
+- **State Management**: React Hooks
+- **Data Storage**: LocalStorage (자동 저장)
+- **Deployment**: Vercel-ready
+
+## 🎮 프로그램 구성
+
+### Module 0: 인트로 (온보딩)
+시간탐정 소개 및 프로그램 목표 안내
+
+### Module 1: 시간여행 타임라인 (15분)
+- 수면 시간 기록
+- 방과 후 ~ 자기 전 시간대를 3개 구역으로 나누어 활동 기록
+- 드래그 슬라이더로 시간 입력
+- 실시간 시각화 (막대 그래프)
+
+### Module 2: 시간도둑 잡기 게임 (15분)
+- 10장의 시간 낭비 행동 카드 제시
+- "많이 빼앗음 / 별로 안 빼앗음" 분류
+- 중간 성찰 (5장 후)
+- TOP 3 시간도둑 발견 및 시간 환산
+
+### Module 3: 오늘의 정리 (10분)
+- 시간도둑 TOP 3 복습
+- "어떤 것을 줄이고 싶은지" 간단한 성찰
+- 다음 회기 예고
+- **주의**: 복잡한 다짐/전략은 2회기로 미룸
+
+### Module 4: 마무리 화면
+- 오늘 배운 것 요약
+- 다음 회기 안내
+- 데이터 저장 완료
+
+## 🧠 이론적 근거
+
+본 프로그램은 다음 이론들을 기반으로 설계되었습니다:
+
+1. **실행기능이론** (Barkley, 1997): 시간 지각 능력 보완을 위한 시각적 도구 제공
+2. **자기조절이론** (Zimmerman, 2000): 자기 모니터링 → 자기 평가 순환
+3. **게이미피케이션** (Deterding et al., 2011): 즉각 보상과 내러티브로 동기 유발
+4. **메타인지 이론** (Flavell, 1979): 자신의 행동 패턴 객관적 인식
+5. **행동주의 학습이론** (Skinner, 1953): 즉각적 정적 강화
+6. **인지부하이론** (Sweller, 1988): 작업기억 부담 최소화
+
+자세한 이론적 근거는 [THEORY.md](./THEORY.md) 참고
+
+## 🚀 설치 및 실행
+
+```bash
+# 의존성 설치
+npm install
+
+# 개발 서버 실행
+npm run dev
+
+# 프로덕션 빌드
+npm run build
+
+# 프리뷰 (빌드 후)
+npm run preview
+```
+
+## 📂 프로젝트 구조
+
+```
+src/
+├── components/
+│   ├── Module0_Onboarding.jsx      # 온보딩 화면
+│   ├── Module1_TimeMap.jsx         # 시간 지도 만들기
+│   ├── Module2_TimeThief.jsx       # 시간도둑 게임
+│   ├── Module3_Commitment.jsx      # 간단한 정리 (1회기용)
+│   └── FinalScreen.jsx             # 마무리 화면
+├── App.jsx                          # 메인 앱 (라우팅, LocalStorage)
+├── index.css                        # 글로벌 스타일 (MUJI 컬러)
+└── main.jsx                         # 엔트리 포인트
+
+THEORY.md                            # 이론적 근거 상세 문서
+```
+
+## 🎨 디자인 컬러 팔레트 (무인양품 스타일)
+
+```css
+primary: #8B7355      /* 따뜻한 브라운 */
+secondary: #A89F91    /* 그레이 베이지 */
+accent: #D4A574       /* 연한 베이지 */
+success: #9CAF88      /* 연한 올리브 */
+warning: #C9A66B      /* 연한 골드 */
+background: #F5F3F0   /* 크림 베이지 */
+textDark: #4A4238     /* 다크 브라운 */
+```
+
+## 💾 데이터 저장
+
+- **LocalStorage 사용**: 브라우저에 자동 저장
+- **개인정보 보호**: 서버 전송 없음, 로컬에만 저장
+- **자동 저장**: 각 모듈 완료 시 자동 저장
+- **복원 기능**: 페이지 새로고침 시 진행 상황 복원
+
+## 📱 반응형 디자인
+
+- **모바일**: 세로 스크롤, 터치 최적화
+- **태블릿**: 가로/세로 모두 지원
+- **PC**: 최대 너비 896px (max-w-lg) 제한으로 가독성 유지
+
+## 🔍 사용 시 유의사항
+
+### 중재자(교사/상담사)를 위한 가이드
+1. **1회기 목적**: 이 프로그램은 "인식" 단계입니다. 학생이 자신의 시간 사용 패턴과 시간 낭비 행동을 발견하는 것이 목표입니다.
+
+2. **다짐은 가벼게**: Module 3은 의도적으로 간소화했습니다. "완벽한 계획"보다 "가벼운 생각"을 유도합니다.
+
+3. **2회기 연계**: 다음 시간에는 구체적인 전략과 실천 계획을 다룹니다.
+
+4. **실시간 질문 금지**: "지금 뭐 하고 있었어?" 같은 질문은 중재 중 상황에 부적합하므로 제거했습니다. 대신 "어제"를 회고합니다.
+
+### 학생 사용 시
+- 정답은 없어요! 솔직하게 입력하면 됩니다.
+- 중간에 나가도 자동 저장되니 걱정 마세요.
+- 실수해도 다시 선택할 수 있어요.
+
+## 📊 기대 효과
+
+### 즉각적 효과 (1회기 후)
+- ✅ 자신의 시간 사용 패턴 인식
+- ✅ 주요 시간 낭비 행동 3가지 발견
+- ✅ 시간 개념의 시각화 (추상 → 구체)
+
+### 장기적 효과 (프로그램 전체 후)
+- ✅ 메타인지 능력 향상
+- ✅ 자기조절 능력 발달
+- ✅ 시간관리 습관 형성
+
+## 🤝 기여
+
+이 프로그램은 ADHD 학생 지원을 위한 전문 중재 도구입니다.
+개선 아이디어나 버그 리포트는 이슈로 제출해주세요.
+
+## 📜 라이선스
+
+본 프로그램은 교육/연구 목적으로 개발되었습니다.
+
+## 📞 문의
+
+프로그램 관련 문의는 GitHub Issues를 활용해주세요.
+
+---
+
+**Version**: 1.0
+**Last Updated**: 2025
+**Developed for**: ADHD 시간관리 중재 프로그램 1회기

@@ -153,7 +153,7 @@ export default function Module1_TimeMap({ onComplete }) {
               <button
                 key={hour}
                 onClick={() => type === 'sleep' ? handleSleepTimeSelect(hour) : handleWakeTimeSelect(hour)}
-                className="py-4 px-6 text-lg font-bold rounded-xl border-2 border-gray-300 hover:border-primary hover:bg-blue-50 transition-all"
+                className="py-4 px-6 text-lg font-bold rounded-xl border-2 border-beige-300 hover:border-primary hover:bg-beige-50 transition-all"
               >
                 {labels[index]}
               </button>
@@ -202,7 +202,7 @@ export default function Module1_TimeMap({ onComplete }) {
           <p className="text-xl font-semibold text-gray-800">잘 잤구나!</p>
           <button
             onClick={goToZoneIntro}
-            className="mt-8 px-8 py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors"
+            className="mt-8 px-8 py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-beige-700 transition-colors"
           >
             다음
           </button>
@@ -243,7 +243,7 @@ export default function Module1_TimeMap({ onComplete }) {
 
           <button
             onClick={() => setStep('selectActivity')}
-            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors"
+            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-beige-700 transition-colors"
           >
             시작하기
           </button>
@@ -278,8 +278,8 @@ export default function Module1_TimeMap({ onComplete }) {
                   onClick={() => toggleActivity(activity.id)}
                   className={`p-5 rounded-xl border-2 transition-all flex flex-col items-center justify-center min-h-[100px] ${
                     selectedActivities.includes(activity.id)
-                      ? 'border-primary bg-blue-50 scale-105 shadow-md'
-                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                      ? 'border-primary bg-beige-100 scale-105 shadow-muji'
+                      : 'border-beige-300 hover:border-beige-400 hover:bg-beige-50'
                   }`}
                 >
                   <div className="text-4xl mb-2">{activity.emoji}</div>
@@ -294,8 +294,8 @@ export default function Module1_TimeMap({ onComplete }) {
             disabled={selectedActivities.length === 0}
             className={`w-full py-4 rounded-xl font-bold text-lg transition-colors ${
               selectedActivities.length === 0
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'bg-primary text-white hover:bg-blue-600'
+                ? 'bg-beige-200 text-beige-500 cursor-not-allowed'
+                : 'bg-primary text-white hover:bg-beige-700'
             }`}
           >
             다음
@@ -430,7 +430,7 @@ export default function Module1_TimeMap({ onComplete }) {
           </div>
         </div>
 
-        <div className="bg-yellow-50 border-2 border-yellow-400 rounded-2xl p-6">
+        <div className="bg-beige-100 border-2 border-warning rounded-2xl p-6">
           <div className="text-center space-y-3">
             <div className="text-4xl">💡</div>
             <h3 className="text-xl font-bold text-gray-800">발견!</h3>
@@ -439,18 +439,18 @@ export default function Module1_TimeMap({ onComplete }) {
               공부 시간 = {(studyTime / 60).toFixed(1)}시간
             </p>
             {screenTimeMinutes > 0 && studyTime === 0 && (
-              <p className="text-lg font-bold text-orange-600">
+              <p className="text-lg font-bold text-warning">
                 공부 시간이 0분이네!<br />
                 전자기기 사용 시간은 {(screenTimeMinutes / 60).toFixed(1)}시간이나 됐어!
               </p>
             )}
             {screenTimeMinutes > studyTime && studyTime > 0 && (
-              <p className="text-lg font-bold text-orange-600">
+              <p className="text-lg font-bold text-warning">
                 전자기기 사용 시간이 공부 시간 보다 {Math.round(screenTimeMinutes / studyTime)}배 많았어!
               </p>
             )}
             {studyTime > screenTimeMinutes && screenTimeMinutes > 0 && (
-              <p className="text-lg font-bold text-green-600">
+              <p className="text-lg font-bold text-success">
                 공부를 열심히했구나, 잘했어!
               </p>
             )}
