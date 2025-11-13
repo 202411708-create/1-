@@ -304,6 +304,9 @@ export default function Module1_TimeMap({ onComplete }) {
     );
   }
 
+  // Move useState outside of conditional logic
+  const [inputMinutes, setInputMinutes] = useState(30);
+
   if (step === 'timeInput') {
     const zone = TIME_ZONES[currentZoneIndex];
     const remainingMinutes = getRemainingMinutes();
@@ -329,8 +332,6 @@ export default function Module1_TimeMap({ onComplete }) {
         </div>
       );
     }
-
-    const [inputMinutes, setInputMinutes] = useState(30);
 
     const handleConfirm = () => {
       handleTimeInput(currentActivityId, inputMinutes);

@@ -27,6 +27,24 @@ html, body, #root {
   overflow-x: hidden;
 }
 
+/* Text overflow prevention */
+p, h1, h2, h3, h4, h5, h6, span, div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+/* Button and input styling */
+button {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+}
+
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in;
 }
