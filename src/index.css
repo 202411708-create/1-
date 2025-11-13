@@ -47,16 +47,52 @@ input[type="range"] {
 
 /* Responsive container adjustments for better PC viewing */
 .max-w-lg {
-  max-width: 48rem !important; /* 768px instead of 512px */
+  max-width: 56rem !important; /* 896px for better PC viewing */
 }
 
 /* Better text sizing for readability */
 h1, h2, h3 {
-  line-height: 1.3;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
 }
 
 p {
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+/* Fix icon and text overlap issues */
+.flex.items-center {
+  align-items: center;
+  gap: 1rem;
+}
+
+.flex.items-start {
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* Ensure buttons don't overflow */
+button {
+  min-height: 44px; /* Better touch target */
+}
+
+/* Better spacing for activity cards */
+.space-y-3 > * + * {
+  margin-top: 0.875rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1.25rem;
+}
+
+/* Grid adjustments for activity selection */
+.grid {
+  gap: 1rem;
+}
+
+/* Ensure emoji don't shrink */
+.text-2xl, .text-3xl, .text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl {
+  flex-shrink: 0;
 }
 
 .animate-fade-in {

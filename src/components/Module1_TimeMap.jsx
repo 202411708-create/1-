@@ -270,20 +270,20 @@ export default function Module1_TimeMap({ onComplete }) {
           </div>
 
           <div>
-            <h3 className="font-bold text-gray-800 mb-3">뭐 했어? (여러 개 선택 가능)</h3>
-            <div className="grid grid-cols-4 gap-3">
+            <h3 className="font-bold text-gray-800 mb-4">뭐 했어? (여러 개 선택 가능)</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {ACTIVITY_CARDS.map(activity => (
                 <button
                   key={activity.id}
                   onClick={() => toggleActivity(activity.id)}
-                  className={`p-4 rounded-xl border-2 transition-all ${
+                  className={`p-5 rounded-xl border-2 transition-all flex flex-col items-center justify-center min-h-[100px] ${
                     selectedActivities.includes(activity.id)
-                      ? 'border-primary bg-blue-50 scale-105'
-                      : 'border-gray-300 hover:border-gray-400'
+                      ? 'border-primary bg-blue-50 scale-105 shadow-md'
+                      : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
                   }`}
                 >
-                  <div className="text-3xl mb-1">{activity.emoji}</div>
-                  <div className="text-xs font-semibold">{activity.label}</div>
+                  <div className="text-4xl mb-2">{activity.emoji}</div>
+                  <div className="text-sm font-semibold text-center">{activity.label}</div>
                 </button>
               ))}
             </div>
@@ -406,20 +406,20 @@ export default function Module1_TimeMap({ onComplete }) {
             🗺️ 어제 너의 시간 지도가 완성됐어!
           </h2>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {results.slice(0, 6).map(activity => {
               const card = ACTIVITY_CARDS.find(a => a.id === activity.id);
               return (
-                <div key={activity.id} className="flex items-center gap-3">
-                  <div className="text-2xl">{card.emoji}</div>
-                  <div className="flex-1">
-                    <div className="flex justify-between mb-1">
-                      <span className="font-semibold">{card.label}</span>
-                      <span className="text-sm text-gray-600">{activity.hours}시간 ({activity.percentage}%)</span>
+                <div key={activity.id} className="flex items-center gap-4">
+                  <div className="text-3xl flex-shrink-0">{card.emoji}</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-baseline mb-2 gap-2">
+                      <span className="font-semibold text-gray-800">{card.label}</span>
+                      <span className="text-sm text-gray-600 whitespace-nowrap">{activity.hours}시간 ({activity.percentage}%)</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-gray-200 rounded-full h-3">
                       <div
-                        className="bg-primary h-2 rounded-full"
+                        className="bg-primary h-3 rounded-full transition-all"
                         style={{ width: `${activity.percentage}%` }}
                       ></div>
                     </div>
@@ -438,9 +438,20 @@ export default function Module1_TimeMap({ onComplete }) {
               스크린 시간 (게임+SNS+유튜브) = {(screenTimeMinutes / 60).toFixed(1)}시간<br />
               공부 시간 = {(studyTime / 60).toFixed(1)}시간
             </p>
-            {screenTimeMinutes > studyTime && (
+            {screenTimeMinutes > 0 && studyTime === 0 && (
               <p className="text-lg font-bold text-orange-600">
-                😮 스크린이 공부보다 {(screenTimeMinutes / studyTime).toFixed(1)}배 많았어!
+                😮 공부 시간이 0분이에요!<br />
+                스크린 시간은 {(screenTimeMinutes / 60).toFixed(1)}시간이나 됐어요
+              </p>
+            )}
+            {screenTimeMinutes > studyTime && studyTime > 0 && (
+              <p className="text-lg font-bold text-orange-600">
+                😮 스크린이 공부보다 {Math.round(screenTimeMinutes / studyTime)}배 많았어!
+              </p>
+            )}
+            {studyTime > screenTimeMinutes && screenTimeMinutes > 0 && (
+              <p className="text-lg font-bold text-green-600">
+                👍 공부가 스크린보다 많았어! 잘했어!
               </p>
             )}
           </div>
