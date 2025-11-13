@@ -45,6 +45,20 @@ input[type="range"] {
   cursor: pointer;
 }
 
+/* Responsive container adjustments for better PC viewing */
+.max-w-lg {
+  max-width: 48rem !important; /* 768px instead of 512px */
+}
+
+/* Better text sizing for readability */
+h1, h2, h3 {
+  line-height: 1.3;
+}
+
+p {
+  line-height: 1.6;
+}
+
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in;
 }

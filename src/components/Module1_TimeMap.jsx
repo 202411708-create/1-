@@ -25,6 +25,7 @@ export default function Module1_TimeMap({ onComplete }) {
   const [selectedActivities, setSelectedActivities] = useState([]);
   const [activityTimes, setActivityTimes] = useState({});
   const [allZoneData, setAllZoneData] = useState({});
+  const [inputMinutes, setInputMinutes] = useState(30);
 
   // 수면 시간 선택
   const handleSleepTimeSelect = (hour) => {
@@ -303,9 +304,6 @@ export default function Module1_TimeMap({ onComplete }) {
       </div>
     );
   }
-
-  // Move useState outside of conditional logic
-  const [inputMinutes, setInputMinutes] = useState(30);
 
   if (step === 'timeInput') {
     const zone = TIME_ZONES[currentZoneIndex];
