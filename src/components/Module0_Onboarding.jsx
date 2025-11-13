@@ -50,15 +50,15 @@ export default function Module0_Onboarding({ onComplete }) {
 
       {/* Screen 1: 첫 인사 */}
       {screen === 1 && (
-        <div className="text-center animate-fade-in space-y-6 max-w-md">
-          <div className="text-7xl">🕵️</div>
-          <div className="bg-white rounded-2xl p-6 shadow-lg animate-scale-in">
-            <p className="text-xl text-gray-800 leading-relaxed">
+        <div className="text-center animate-fade-in space-y-8 max-w-md px-6">
+          <div className="text-7xl mb-4">🕵️</div>
+          <div className="bg-white rounded-2xl p-8 shadow-lg animate-scale-in">
+            <p className="text-xl text-gray-800 leading-loose">
               안녕! 나는 시간 탐정이야
             </p>
           </div>
-          <div className="bg-white rounded-2xl p-6 shadow-lg animate-scale-in" style={{ animationDelay: '0.3s' }}>
-            <p className="text-xl text-gray-800 leading-relaxed">
+          <div className="bg-white rounded-2xl p-8 shadow-lg animate-scale-in" style={{ animationDelay: '0.3s' }}>
+            <p className="text-xl text-gray-800 leading-loose">
               오늘은 너의 시간을<br />
               자세히 들여다볼거야!
             </p>
@@ -68,23 +68,23 @@ export default function Module0_Onboarding({ onComplete }) {
 
       {/* Screen 2: 미션 소개 */}
       {screen === 2 && (
-        <div className="text-center animate-fade-in space-y-8 max-w-lg">
-          <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl p-8 shadow-xl">
-            <div className="text-5xl mb-4">🎯</div>
-            <h2 className="text-3xl font-bold text-white mb-2">오늘의 목표</h2>
-            <p className="text-2xl font-bold text-white">
+        <div className="text-center animate-fade-in space-y-12 max-w-lg px-6">
+          <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl p-10 shadow-xl">
+            <div className="text-5xl mb-6">🎯</div>
+            <h2 className="text-3xl font-bold text-white mb-4">오늘의 목표</h2>
+            <p className="text-2xl font-bold text-white leading-relaxed">
               나의 시간 사용<br />
               알아보기
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 shadow-lg">
-            <div className="text-6xl mb-4">🕵️</div>
-            <p className="text-lg text-gray-800 leading-relaxed">
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="text-6xl mb-6">🕵️</div>
+            <p className="text-lg text-gray-800 leading-loose">
               <span className="font-bold text-primary">시간은 정말 소중해!</span><br />
               한 번 지나간 시간은 절대 돌아오지 않거든.
             </p>
-            <p className="text-lg text-gray-800 mt-4 leading-relaxed">
+            <p className="text-lg text-gray-800 mt-6 leading-loose">
               그래서 이 소중한 시간을 너는 어떻게<br />
               쓰고 있는지 함께 알아보자
             </p>

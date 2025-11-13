@@ -135,22 +135,22 @@ export default function Module2_TimeThief({ onComplete }) {
 
   if (step === 'intro') {
     return (
-      <div className="max-w-lg mx-auto animate-fade-in">
-        <div className="bg-white rounded-2xl p-8 shadow-lg text-center space-y-6">
+      <div className="max-w-lg mx-auto animate-fade-in px-6">
+        <div className="bg-white rounded-2xl p-10 shadow-lg text-center space-y-8">
           <h2 className="text-3xl font-bold text-gray-800">
             이제 게임을 하나 할 거야!
           </h2>
 
-          <div className="text-6xl animate-scale-in">🕵️</div>
+          <div className="text-6xl animate-scale-in my-4">🕵️</div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             <p className="text-xl font-semibold text-gray-800">
               시간도둑을 잡아야 해!
             </p>
-            <div className="text-5xl">💨 🏃 💨</div>
+            <div className="text-5xl my-3">💨 🏃 💨</div>
           </div>
 
-          <div className="bg-blue-50 p-6 rounded-xl space-y-3">
+          <div className="bg-blue-50 p-7 rounded-xl space-y-4">
             <p className="text-gray-800 font-medium">
               카드가 나오면 판단해보자:
             </p>
@@ -164,11 +164,11 @@ export default function Module2_TimeThief({ onComplete }) {
             </div>
           </div>
 
-          <p className="text-lg font-bold text-primary">총 10장! 시작!</p>
+          <p className="text-lg font-bold text-primary my-4">총 10장! 시작!</p>
 
           <button
             onClick={() => setStep('cards')}
-            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors"
+            className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors mt-6"
           >
             시작하기
           </button>
@@ -181,10 +181,10 @@ export default function Module2_TimeThief({ onComplete }) {
     const card = TIME_THIEF_CARDS[currentCardIndex];
 
     return (
-      <div className="max-w-lg mx-auto animate-fade-in">
+      <div className="max-w-lg mx-auto animate-fade-in px-6">
         {/* Progress */}
-        <div className="mb-6">
-          <div className="flex justify-between items-center mb-2">
+        <div className="mb-8">
+          <div className="flex justify-between items-center mb-3">
             <span className="text-sm font-semibold text-gray-600">
               카드 {currentCardIndex + 1} / {TIME_THIEF_CARDS.length}
             </span>
@@ -198,22 +198,22 @@ export default function Module2_TimeThief({ onComplete }) {
         </div>
 
         {/* Card */}
-        <div className={`bg-white rounded-3xl p-8 shadow-2xl transition-all duration-500 ${
+        <div className={`bg-white rounded-3xl p-10 shadow-2xl transition-all duration-500 ${
           swipeDirection === 'right' ? 'translate-x-full opacity-0' :
           swipeDirection === 'left' ? '-translate-x-full opacity-0' :
           'translate-x-0 opacity-100'
         }`}>
-          <div className="text-center space-y-6">
-            <div className="text-8xl">{card.emoji}</div>
+          <div className="text-center space-y-8">
+            <div className="text-8xl my-4">{card.emoji}</div>
 
-            <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">
+            <div className="space-y-3">
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">
                 {card.title}
               </h3>
-              <p className="text-gray-600 font-medium mb-3">
+              <p className="text-gray-600 font-medium mb-4">
                 {card.subtitle}
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700 leading-relaxed">
                 {card.description}
               </p>
             </div>

@@ -166,12 +166,12 @@ export default function Module1_TimeMap({ onComplete }) {
 
   if (step === 'sleep') {
     return (
-      <div className="max-w-lg mx-auto">
-        <div className="bg-white rounded-2xl p-8 shadow-lg mb-6">
-          <h1 className="text-2xl font-bold text-gray-800 text-center mb-4">
-            어제를 떠올려볼까? 
+      <div className="max-w-lg mx-auto px-6">
+        <div className="bg-white rounded-2xl p-10 shadow-lg mb-8">
+          <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">
+            어제를 떠올려볼까?
           </h1>
-          <p className="text-gray-600 text-center">
+          <p className="text-gray-600 text-center leading-relaxed">
             먼저 시간을 되돌려보자
           </p>
         </div>
@@ -182,7 +182,7 @@ export default function Module1_TimeMap({ onComplete }) {
 
   if (step === 'wake') {
     return (
-      <div className="max-w-lg mx-auto">
+      <div className="max-w-lg mx-auto px-6">
         {renderTimeSelector('wake')}
       </div>
     );
@@ -191,18 +191,18 @@ export default function Module1_TimeMap({ onComplete }) {
   if (step === 'sleepResult') {
     const sleepHours = calculateSleepHours();
     return (
-      <div className="max-w-lg mx-auto animate-fade-in">
-        <div className="bg-white rounded-2xl p-12 shadow-lg text-center space-y-6">
-          <div className="text-6xl">😴</div>
-          <div className="space-y-2">
+      <div className="max-w-lg mx-auto animate-fade-in px-6">
+        <div className="bg-white rounded-2xl p-12 shadow-lg text-center space-y-8">
+          <div className="text-6xl mb-4">😴</div>
+          <div className="space-y-3">
             <div className="text-5xl font-bold text-primary">{sleepHours}시간</div>
             <p className="text-xl text-gray-600">수면 시간</p>
           </div>
-          <div className="text-6xl">🕵️</div>
+          <div className="text-6xl my-4">🕵️</div>
           <p className="text-xl font-semibold text-gray-800">잘 잤구나!</p>
           <button
             onClick={goToZoneIntro}
-            className="mt-6 px-8 py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors"
+            className="mt-8 px-8 py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors"
           >
             다음
           </button>
@@ -213,28 +213,28 @@ export default function Module1_TimeMap({ onComplete }) {
 
   if (step === 'zoneIntro') {
     return (
-      <div className="max-w-lg mx-auto animate-fade-in">
-        <div className="bg-white rounded-2xl p-8 shadow-lg space-y-6">
-          <h2 className="text-2xl font-bold text-gray-800 text-center">
+      <div className="max-w-lg mx-auto animate-fade-in px-6">
+        <div className="bg-white rounded-2xl p-10 shadow-lg space-y-8">
+          <h2 className="text-2xl font-bold text-gray-800 text-center mb-4">
             이제 어제를 4개 구역으로 나눠볼게
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-5">
             {TIME_ZONES.map((zone, index) => (
-              <div key={zone.id} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+              <div key={zone.id} className="flex items-center gap-4 p-5 bg-gray-50 rounded-xl">
                 <div className="text-4xl">{zone.emoji}</div>
                 <div>
-                  <div className="font-bold text-gray-800">{zone.label}</div>
-                  <div className="text-sm text-gray-600">{zone.start} ~ {zone.end}</div>
+                  <div className="font-bold text-gray-800 text-lg">{zone.label}</div>
+                  <div className="text-sm text-gray-600 mt-1">{zone.start} ~ {zone.end}</div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="bg-blue-50 p-4 rounded-xl">
+          <div className="bg-blue-50 p-6 rounded-xl">
             <div className="flex items-start gap-3">
               <div className="text-2xl">🕵️</div>
-              <p className="text-gray-700">
+              <p className="text-gray-700 leading-relaxed">
                 학교 시간은 정해져 있으니<br />
                 방과 후부터 채워보자!
               </p>
@@ -255,10 +255,10 @@ export default function Module1_TimeMap({ onComplete }) {
   if (step === 'selectActivity') {
     const zone = TIME_ZONES[currentZoneIndex];
     return (
-      <div className="max-w-lg mx-auto animate-fade-in">
-        <div className="bg-white rounded-2xl p-6 shadow-lg space-y-6">
+      <div className="max-w-lg mx-auto animate-fade-in px-6">
+        <div className="bg-white rounded-2xl p-8 shadow-lg space-y-8">
           <div>
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between mb-3">
               <h2 className="text-xl font-bold text-gray-800">
                 {zone.emoji} {zone.label} ({zone.start}~{zone.end})
               </h2>
@@ -266,11 +266,11 @@ export default function Module1_TimeMap({ onComplete }) {
             <div className="w-full bg-gray-200 rounded-full h-3">
               <div className="bg-primary h-3 rounded-full" style={{ width: '100%' }}></div>
             </div>
-            <p className="text-sm text-gray-600 mt-1">남은 시간: {zone.hours}시간</p>
+            <p className="text-sm text-gray-600 mt-2">남은 시간: {zone.hours}시간</p>
           </div>
 
           <div>
-            <h3 className="font-bold text-gray-800 mb-4">무엇을 했니? (여러 개 선택 가능)</h3>
+            <h3 className="font-bold text-gray-800 mb-5">무엇을 했니? (여러 개 선택 가능)</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {ACTIVITY_CARDS.map(activity => (
                 <button

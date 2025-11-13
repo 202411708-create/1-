@@ -42,18 +42,18 @@ export default function Module3_Commitment({ timeThieves, onComplete }) {
 
   if (step === 'intro') {
     return (
-      <div className="max-w-lg mx-auto animate-fade-in">
-        <div className="bg-white rounded-2xl p-8 shadow-lg text-center space-y-6">
+      <div className="max-w-lg mx-auto animate-fade-in px-6">
+        <div className="bg-white rounded-2xl p-10 shadow-lg text-center space-y-8">
           <h2 className="text-3xl font-bold text-gray-800">
             이제 변화를 만들어볼까?
           </h2>
 
-          <p className="text-gray-700">
+          <p className="text-gray-700 text-lg leading-relaxed">
             시간도둑 TOP 3 중<br />
             <span className="font-bold text-primary">하나만</span> 줄여보자!
           </p>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {top3.map((thief, index) => (
               <button
                 key={thief.id}
@@ -61,16 +61,16 @@ export default function Module3_Commitment({ timeThieves, onComplete }) {
                   setSelectedThief(thief);
                   setStep('setGoal');
                 }}
-                className="w-full p-4 bg-gradient-to-r from-orange-50 to-yellow-50 border-2 border-orange-200 rounded-xl hover:border-orange-400 transition-all text-left"
+                className="w-full p-5 bg-gradient-to-r from-orange-50 to-yellow-50 border-2 border-orange-200 rounded-xl hover:border-orange-400 transition-all text-left"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                   <div className="text-4xl">
                     {index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
                   </div>
                   <div className="text-3xl">{thief.emoji}</div>
                   <div className="flex-1">
-                    <div className="font-bold text-gray-800">{thief.title}</div>
-                    <div className="text-sm text-gray-600">{thief.estimatedTime}</div>
+                    <div className="font-bold text-gray-800 text-lg">{thief.title}</div>
+                    <div className="text-sm text-gray-600 mt-1">{thief.estimatedTime}</div>
                   </div>
                 </div>
               </button>
@@ -85,8 +85,8 @@ export default function Module3_Commitment({ timeThieves, onComplete }) {
     const currentMinutes = getCurrentTime(selectedThief);
 
     return (
-      <div className="max-w-lg mx-auto animate-fade-in">
-        <div className="bg-white rounded-2xl p-6 shadow-lg space-y-6">
+      <div className="max-w-lg mx-auto animate-fade-in px-6">
+        <div className="bg-white rounded-2xl p-8 shadow-lg space-y-8">
           <div className="text-center">
             <div className="text-6xl mb-3">{selectedThief.emoji}</div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">
