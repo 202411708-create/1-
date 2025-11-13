@@ -45,7 +45,7 @@ export default function Module3_Commitment({ timeThieves, onComplete }) {
       <div className="max-w-lg mx-auto animate-fade-in">
         <div className="bg-white rounded-2xl p-8 shadow-lg text-center space-y-6">
           <h2 className="text-3xl font-bold text-gray-800">
-            이제 변화를 만들어볼까? 💪
+            이제 변화를 만들어볼까?
           </h2>
 
           <p className="text-gray-700">
@@ -152,7 +152,7 @@ export default function Module3_Commitment({ timeThieves, onComplete }) {
           <div className="text-center">
             <div className="text-5xl mb-3">🤖</div>
             <h2 className="text-2xl font-bold text-gray-800">
-              도움이 될 만한 방법들!
+              이 방법들이 도움이 될거야!
             </h2>
           </div>
 
@@ -203,13 +203,13 @@ export default function Module3_Commitment({ timeThieves, onComplete }) {
         <div className="bg-white rounded-2xl p-6 shadow-lg space-y-6">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              ✍️ 나의 다짐을 완성하자!
+              나의 다짐을 완성해볼까?
             </h2>
           </div>
 
           <div className="bg-gradient-to-br from-yellow-50 to-orange-50 border-3 border-orange-300 rounded-2xl p-6 space-y-4">
             <div className="text-center text-3xl font-bold text-gray-800 mb-4">
-              💪 나의 다짐
+              나의 다짐
             </div>
 
             <div className="space-y-3 text-gray-800">
@@ -285,16 +285,15 @@ export default function Module3_Commitment({ timeThieves, onComplete }) {
 
             <div className="bg-yellow-50 border-2 border-yellow-300 rounded-xl p-6 space-y-3">
               <div className="text-3xl">💡</div>
-              <p className="font-semibold text-gray-800">중요한 팁:</p>
+              <p className="font-semibold text-gray-800">기억해둬!:</p>
               <div className="text-left space-y-2 text-gray-700">
                 <p>✅ 완벽하게 안 해도 괜찮아</p>
-                <p>✅ 조금씩 줄이는 것만으로도 성공!</p>
-                <p>✅ 안 되면 다음 시간에 함께 고민!</p>
+                <p>✅ 조금씩 줄여가는 것 부터 시작하는거야</p>
               </div>
             </div>
 
             <p className="text-lg text-gray-800 font-semibold">
-              다음 시간까지 한 번 시도해봐!
+              다음 시간까지 한 번 시도해보자!
             </p>
           </div>
 

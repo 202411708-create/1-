@@ -12,9 +12,9 @@ const ACTIVITY_CARDS = [
 ];
 
 const TIME_ZONES = [
-  { id: 'afternoon', label: '방과 후', emoji: '🌅', start: '3시', end: '6시', hours: 3 },
-  { id: 'evening', label: '저녁 시간', emoji: '🌆', start: '6시', end: '9시', hours: 3 },
-  { id: 'night', label: '자기 전', emoji: '🌙', start: '9시', end: '11시', hours: 2 },
+  { id: 'afternoon', label: '방과 후', emoji: '🌅', start: '오후 3시', end: '오후 6시', hours: 3 },
+  { id: 'evening', label: '저녁 시간', emoji: '🌆', start: '오후 6시', end: '오후 9시', hours: 3 },
+  { id: 'night', label: '자기 전', emoji: '🌙', start: '오후 9시', end: '오후 11시', hours: 2 },
 ];
 
 export default function Module1_TimeMap({ onComplete }) {
@@ -138,13 +138,13 @@ export default function Module1_TimeMap({ onComplete }) {
       : [5, 6, 7, 8, 9, 10, 11, 12];
 
     const labels = type === 'sleep'
-      ? ['오후 8시', '9시', '10시', '11시', '자정', '새벽 1시', '2시', '3시']
-      : ['새벽 5시', '6시', '7시', '8시', '9시', '10시', '11시', '정오'];
+      ? ['오후 8시', '오후 9시', '오후 10시', '오후 11시', '자정', '새벽 1시', '새벽 2시', '새벽 3시']
+      : ['새벽 5시', '오전 6시', '오전 7시', '오전 8시', '오전 9시', '오전 10시', '오전 11시', '정오'];
 
     return (
       <div className="animate-fade-in space-y-6">
         <h2 className="text-2xl font-bold text-gray-800 text-center">
-          {type === 'sleep' ? '어제 몇 시에 잤어? 🌙' : '오늘 아침 몇 시에 일어났어? ☀️'}
+          {type === 'sleep' ? '어제 몇 시에 잤어? ' : '오늘 몇 시에 일어났어? '}
         </h2>
 
         <div className="bg-white rounded-2xl p-8 shadow-lg">
@@ -169,10 +169,10 @@ export default function Module1_TimeMap({ onComplete }) {
       <div className="max-w-lg mx-auto">
         <div className="bg-white rounded-2xl p-8 shadow-lg mb-6">
           <h1 className="text-2xl font-bold text-gray-800 text-center mb-4">
-            어제를 떠올려보자! 🌙
+            어제를 떠올려볼까? 
           </h1>
           <p className="text-gray-600 text-center">
-            먼저 기억의 닻을 내릴게 ⚓
+            먼저 시간을 되돌려보자
           </p>
         </div>
         {renderTimeSelector('sleep')}
@@ -199,7 +199,7 @@ export default function Module1_TimeMap({ onComplete }) {
             <p className="text-xl text-gray-600">수면 시간</p>
           </div>
           <div className="text-6xl">🕵️</div>
-          <p className="text-xl font-semibold text-gray-800">잘 잤네! 👍</p>
+          <p className="text-xl font-semibold text-gray-800">잘 잤구나!</p>
           <button
             onClick={goToZoneIntro}
             className="mt-6 px-8 py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors"
@@ -216,7 +216,7 @@ export default function Module1_TimeMap({ onComplete }) {
       <div className="max-w-lg mx-auto animate-fade-in">
         <div className="bg-white rounded-2xl p-8 shadow-lg space-y-6">
           <h2 className="text-2xl font-bold text-gray-800 text-center">
-            이제 어제를 4개 구역으로 나눠볼게!
+            이제 어제를 4개 구역으로 나눠볼게
           </h2>
 
           <div className="space-y-4">
@@ -270,7 +270,7 @@ export default function Module1_TimeMap({ onComplete }) {
           </div>
 
           <div>
-            <h3 className="font-bold text-gray-800 mb-4">뭐 했어? (여러 개 선택 가능)</h3>
+            <h3 className="font-bold text-gray-800 mb-4">무엇을 했니? (여러 개 선택 가능)</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {ACTIVITY_CARDS.map(activity => (
                 <button
@@ -350,7 +350,7 @@ export default function Module1_TimeMap({ onComplete }) {
 
           <div className="text-center">
             <div className="text-6xl mb-4">{currentActivity.emoji}</div>
-            <h2 className="text-2xl font-bold text-gray-800">{currentActivity.label} 얼마나 했어?</h2>
+            <h2 className="text-2xl font-bold text-gray-800">{currentActivity.label} 얼마나 했니?</h2>
           </div>
 
           <div className="space-y-4">
@@ -403,7 +403,7 @@ export default function Module1_TimeMap({ onComplete }) {
       <div className="max-w-lg mx-auto animate-fade-in space-y-6">
         <div className="bg-white rounded-2xl p-6 shadow-lg">
           <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-            🗺️ 어제 너의 시간 지도가 완성됐어!
+            이제 어제 보낸 시간들을 확인해볼까?
           </h2>
 
           <div className="space-y-4">
@@ -435,23 +435,23 @@ export default function Module1_TimeMap({ onComplete }) {
             <div className="text-4xl">💡</div>
             <h3 className="text-xl font-bold text-gray-800">발견!</h3>
             <p className="text-gray-700">
-              스크린 시간 (게임+SNS+유튜브) = {(screenTimeMinutes / 60).toFixed(1)}시간<br />
+              전자기기 사용 시간 (게임+SNS+유튜브) = {(screenTimeMinutes / 60).toFixed(1)}시간<br />
               공부 시간 = {(studyTime / 60).toFixed(1)}시간
             </p>
             {screenTimeMinutes > 0 && studyTime === 0 && (
               <p className="text-lg font-bold text-orange-600">
-                😮 공부 시간이 0분이에요!<br />
-                스크린 시간은 {(screenTimeMinutes / 60).toFixed(1)}시간이나 됐어요
+                공부 시간이 0분이네!<br />
+                전자기기 사용 시간은 {(screenTimeMinutes / 60).toFixed(1)}시간이나 됐어!
               </p>
             )}
             {screenTimeMinutes > studyTime && studyTime > 0 && (
               <p className="text-lg font-bold text-orange-600">
-                😮 스크린이 공부보다 {Math.round(screenTimeMinutes / studyTime)}배 많았어!
+                전자기기 사용 시간이 공부 시간 보다 {Math.round(screenTimeMinutes / studyTime)}배 많았어!
               </p>
             )}
             {studyTime > screenTimeMinutes && screenTimeMinutes > 0 && (
               <p className="text-lg font-bold text-green-600">
-                👍 공부가 스크린보다 많았어! 잘했어!
+                공부를 열심히했구나, 잘했어!
               </p>
             )}
           </div>

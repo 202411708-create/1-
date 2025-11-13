@@ -4,17 +4,17 @@ const TIME_THIEF_CARDS = [
   {
     id: 1,
     emoji: "📱",
-    title: "끝없는 숏폼 영상",
-    subtitle: "(틱톡, 릴스, 쇼츠)",
-    description: "한 개만 보려고 했는데 1시간 순삭",
+    title: "진짜 이것까지만 봐야지",
+    subtitle: "(릴스, 쇼츠...)",
+    description: "한 개만 보려고 했어요",
     estimatedTime: "하루 2시간"
   },
   {
     id: 2,
     emoji: "🎮",
-    title: "한 판만... 게임",
-    subtitle: "(롤, 배그, 메이플...)",
-    description: "한 판이 10판으로 변하는 마법",
+    title: "막판할게요",
+    subtitle: "(롤, 롤토체스, 메이플...)",
+    description: "",
     estimatedTime: "하루 1.5시간"
   },
   {
@@ -138,7 +138,7 @@ export default function Module2_TimeThief({ onComplete }) {
       <div className="max-w-lg mx-auto animate-fade-in">
         <div className="bg-white rounded-2xl p-8 shadow-lg text-center space-y-6">
           <h2 className="text-3xl font-bold text-gray-800">
-            이제 재밌는 게임 할 거야! 🎮
+            이제 게임을 하나 할 거야!
           </h2>
 
           <div className="text-6xl animate-scale-in">🕵️</div>
@@ -152,7 +152,7 @@ export default function Module2_TimeThief({ onComplete }) {
 
           <div className="bg-blue-50 p-6 rounded-xl space-y-3">
             <p className="text-gray-800 font-medium">
-              카드가 나오면 판단해봐:
+              카드가 나오면 판단해보자:
             </p>
             <div className="flex justify-between items-center text-sm">
               <div className="flex-1 text-left">
@@ -265,7 +265,7 @@ export default function Module2_TimeThief({ onComplete }) {
       <div className="max-w-lg mx-auto animate-fade-in">
         <div className="bg-white rounded-2xl p-8 shadow-lg text-center space-y-6">
           <h2 className="text-2xl font-bold text-gray-800">
-            잠깐! 멈춰볼까? 🤔
+            잠깐! 멈춰볼래?
           </h2>
 
           <p className="text-gray-700">지금까지 5개 카드 중...</p>
@@ -334,7 +334,7 @@ export default function Module2_TimeThief({ onComplete }) {
       <div className="max-w-lg mx-auto animate-fade-in space-y-6">
         <div className="bg-white rounded-2xl p-8 shadow-lg">
           <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-            🏆 너의 시간도둑 TOP 3
+            🏆 시간도둑 TOP 3
           </h2>
 
           <div className="space-y-4">
@@ -367,7 +367,7 @@ export default function Module2_TimeThief({ onComplete }) {
         <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-6">
           <div className="text-center space-y-4">
             <div className="text-5xl">💰</div>
-            <h3 className="text-xl font-bold text-gray-800">시간 계산해볼까?</h3>
+            <h3 className="text-xl font-bold text-gray-800">시간을 계산해볼까?</h3>
             <div className="space-y-2">
               <p className="text-gray-700">이 3가지 시간도둑이 훔쳐가는 시간은...</p>
               <div className="text-4xl font-bold text-primary">
@@ -378,7 +378,7 @@ export default function Module2_TimeThief({ onComplete }) {
                 = 한 달 {(totalTime * 30).toFixed(0)}시간!
               </p>
               <p className="text-lg font-bold text-orange-600">
-                😮 한 달이면 {(totalTime * 30 / 24).toFixed(0)}일치나 돼!
+                한 달이면 {(totalTime * 30 / 24).toFixed(0)}일치나 돼!
               </p>
             </div>
           </div>
@@ -395,7 +395,7 @@ export default function Module2_TimeThief({ onComplete }) {
                 </div>
               ))}
             </div>
-            <p className="text-gray-700 font-semibold mt-4">할 수 있는 게 엄청 많아!</p>
+            <p className="text-gray-700 font-semibold mt-4">할 수 있는 게 엄청 많겠네!</p>
           </div>
         </div>
 
